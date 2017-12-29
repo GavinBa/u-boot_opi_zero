@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "buildrom",
+            "type": "shell",
+            "command": "export ARCH=arm; export CROSS_COMPILE=arm-none-eabi-; make clean; make ds_opi_zero_defconfig; make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "taskName": "run_emulator",
+            "type": "shell",
+            "command": "qemu-system-arm -m 128M -M virt -bios u-boot.bin -nographic" //ctrl+a then x to quit
+        }
+    ]
+}
